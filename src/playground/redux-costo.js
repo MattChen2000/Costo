@@ -76,7 +76,13 @@ const getVisibleExpenses = (expenses, { text, sortBy, startDate, endDate }) => {
         const endDateMatch = typeof endDate !== 'number' || expense.createAt <= endDate;
         const textMatch = typeof text !== 'string' || expense.description.toLowerCase().includes(text.toLowerCase());
         return startDateMatch && endDateMatch && textMatch;
-    });
+    }).sort((a, b) => {
+        if (sortBy === 'date') {
+            return b.createAt - a.createAt;
+        } else if (sortBy === 'amount') {
+            return b.amount - a.amount;
+        }
+    })
 }
 
 // Store creation
@@ -166,15 +172,15 @@ const setEndDate = (endDate) => ({
 })
 
 // Driver Code
-const rent = store.dispatch(addExpense({description: 'rent', amount: 100, createAt: 3000}))
-const coffee = store.dispatch(addExpense({description: 'coffee', amount: 300, createAt: -1000}))
+const rent = store.dispatch(addExpense({description: 'rent', amount: 100, createAt: -1000}))
+const coffee = store.dispatch(addExpense({description: 'coffee', amount: 300, createAt: 3000}))
 
 // store.dispatch(removeExpense({ id: rent.expense.id }))
 // store.dispatch(editExpense(coffee.expense.id, { amount: 500 }))
 
-store.dispatch(setTextFilter('e'));
+// store.dispatch(setTextFilter('e'));
 // store.dispatch(setTextFilter());
-// store.dispatch(sortByAmount());
+store.dispatch(sortByAmount());
 // store.dispatch(sortByDate());
 // store.dispatch(setStartDate(0));
 // store.dispatch(setEndDate(5000));
