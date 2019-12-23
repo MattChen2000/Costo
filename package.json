@@ -1,0 +1,43 @@
+{
+  "name": "costo",
+  "version": "1.0.0",
+  "description": "A React daily expense tracking app ",
+  "main": "index.js",
+  "repository": "https://github.com/MattChen2000/costo",
+  "author": "Matthew Chen",
+  "license": "MIT",
+  "scripts": {
+    "serve": "live-server public/",
+    "build": "webpack",
+    "dev-server": "webpack-dev-server"
+  },
+  "dependencies": {
+    "@babel/core": "^7.7.7",
+    "@babel/preset-env": "^7.7.7",
+    "@babel/preset-react": "^7.7.4",
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^8.0.6",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
+    "babel-runtime": "^6.26.0",
+    "css-loader": "^3.4.0",
+    "live-server": "^1.2.1",
+    "node-sass": "^4.13.0",
+    "normalize.css": "^8.0.1",
+    "preset-react": "^1.0.0",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
+    "react-modal": "^3.11.1",
+    "react-router-dom": "^5.1.2",
+    "sass-loader": "^8.0.0",
+    "style-loader": "^1.1.1",
+    "validator": "^12.1.0",
+    "webpack": "^4.41.4",
+    "webpack-dev-server": "^3.10.1"
+  },
+  "devDependencies": {
+    "webpack-cli": "^3.3.10"
+  }
+}
