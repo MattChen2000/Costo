@@ -1,3 +1,9 @@
 .DS_Store
 .DS_Store?
 node_modules/
+public/bundle.js
+public/bundle.js.map
+public/1.bundle.js
+public/1.bundle.js.map
+public/styles.css
+public/styles.css.map
