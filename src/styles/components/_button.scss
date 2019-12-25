@@ -1,0 +1,28 @@
+.button {
+  background: none;
+  border: 2px solid $dark-grey;
+  border-radius: 5px;
+  color: $dark-grey;
+  display: inline-block;
+  font-size: $font-size-md;
+  font-weight: 300;
+  line-height: 1;
+  padding: 0.8rem;
+  text-decoration: none;
+}
+
+.button--link {
+  background: none;
+}
+
+.button--secondary {
+  background: none;
+  border: 2px solid red;
+  color: red;
+}
+
+.button--logout {
+  border: none;
+  color: white;
+  padding: $s-size;
+}
