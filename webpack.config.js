@@ -1,32 +1,16 @@
 const path = require('path');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = (env) => {
   const isProduction = env === 'production';
+  const CSSExtract = new ExtractTextPlugin('styles.css');
 
   return {
     entry: './src/app.js',
     output: {
-      path: path.join(__dirname, 'public'),
+      path: path.join(__dirname, 'public', 'dist'),
       filename: 'bundle.js'
     },
-    optimization: {
-      splitChunks: {
-        cacheGroups: {
-          styles: {
-            name: 'styles',
-            test: /\.s?css$/,
-            chunks: 'all',
-            enforce: true,
-          },
-        },
-      },
-    },
-    plugins: [
-      new MiniCssExtractPlugin({
-        filename: '[name].css',
-      }),
-    ],
     module: {
       rules: [{
         loader: 'babel-loader',
@@ -34,17 +18,32 @@ module.exports = (env) => {
         exclude: /node_modules/
       }, {
         test: /\.s?css$/,
-        use: [
-          MiniCssExtractPlugin.loader,
-          'css-loader',
-          'sass-loader'
-        ]
+        use: CSSExtract.extract({
+          use: [
+            {
+              loader: 'css-loader',
+              options: {
+                sourceMap: true
+              }
+            },
+            {
+              loader: 'sass-loader',
+              options: {
+                sourceMap: true
+              }
+            }
+          ]
+        })
       }]
     },
+    plugins: [
+      CSSExtract
+    ],
     devtool: isProduction ? 'source-map' : 'inline-source-map',
     devServer: {
       contentBase: path.join(__dirname, 'public'),
-      historyApiFallback: true
+      historyApiFallback: true,
+      publicPath: '/dist/'
     }
   };
 };
